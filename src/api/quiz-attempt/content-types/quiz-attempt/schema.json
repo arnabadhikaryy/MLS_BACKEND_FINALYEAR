@@ -1,0 +1,40 @@
+{
+  "kind": "collectionType",
+  "collectionName": "quiz_attempts",
+  "info": {
+    "singularName": "quiz-attempt",
+    "pluralName": "quiz-attempts",
+    "displayName": "QuizAttempt"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "user": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "quiz_attempts"
+    },
+    "quiz": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::quiz.quiz",
+      "inversedBy": "quiz_attempts"
+    },
+    "answers": {
+      "type": "json"
+    },
+    "score": {
+      "type": "decimal"
+    },
+    "quiz_status": {
+      "type": "enumeration",
+      "enum": [
+        "Pending",
+        "Graded"
+      ]
+    }
+  }
+}
